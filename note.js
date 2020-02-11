@@ -6,7 +6,7 @@ const notes = [{
     title: "my next trip",
     body: "I would like to go to spain"
 }, {
-    title: "Habbits to workk on",
+    title: "Habbits to work on",
     boby: "Exercise,Eating a bit better"
 }, {
     title: "modification",
@@ -19,7 +19,13 @@ const render = function(notes, filters) {
     const filterednote = notes.filter(function(note) {
         return note.title.toLowerCase().includes(filters.text.toLowerCase())
     })
-    console.log(filterednote)
+    filterednote.forEach(function(note) {
+        const p = document.createElement('p')
+        p.textContent = note.title
+        document.querySelector('#notes').appendChild(p)
+
+    })
+
 }
 render(notes, filters)
 document.querySelector('#creat-note').addEventListener('click', function(e) {
